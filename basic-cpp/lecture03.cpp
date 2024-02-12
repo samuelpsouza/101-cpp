@@ -44,6 +44,50 @@ public:
 
 };
 
+template <typename T>
+class DynamicArray
+{
+  size_t m_size;
+  T*     m_arr;
+
+public:
+  DynamicArray(size_t size)
+    : m_size  (size)
+    , m_arr   (new T[size])
+  {
+    std::cout << "DynamicArray constructor" << std::endl;
+  }
+
+  ~DynamicArray()
+  {
+    delete [] m_arr;
+
+    std::cout << "DynamicArray destructor" << std::endl;
+  }
+
+  T get(size_t index) const
+  {
+    return m_arr[index];
+  }
+
+  void set(size_t index, T val)
+  {
+    m_arr[index] = val;
+  }
+
+  void print() const
+  {
+    for (size_t i = 0; i < m_size; i++) {
+      std::cout << i << " " << m_arr[i] << std::endl;
+    }
+  }
+
+  T & operator [] (size_t index)
+  {
+    return m_arr[index];
+  }
+};
+
 int main(int argc, char * argv[])
 {
 	int a = 10;
@@ -81,7 +125,22 @@ int main(int argc, char * argv[])
   // Play with arrays
 
   IntArray myArray(10);
+  myArray.set(7, 123);
+  myArray.set(4, 23);
   myArray.print();
+
+  DynamicArray<int> myNewArray(10);
+  myNewArray.set(1, 10);
+  myNewArray.set(3, 3);
+  myNewArray.print();
+
+
+  DynamicArray<float> floatArray(1);
+  floatArray.set(0, 3.14);
+  floatArray.print();
+
+  floatArray[0] = 2.14;
+  floatArray.print();
 	return 0;
 }
 
