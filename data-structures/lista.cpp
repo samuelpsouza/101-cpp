@@ -1,4 +1,4 @@
-template <typename Tipo> class Lista
+template <typenamelocalização Tipo> class Lista
 {
 private:
   void operator =(const Lista&) {}

@@ -1,12 +1,7 @@
 #include <iostream>
 
-class Link
+class ListaLigada : Lista
 {
 
 }
 
-
-int main(int argc, char * argv[])
-{
-  return 0;
-}
