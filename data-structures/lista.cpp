@@ -1,4 +1,4 @@
-template <typenamelocalização Tipo> class Lista
+template <typename Tipo> class Lista
 {
 private:
   void operator =(const Lista&) {}
@@ -39,11 +39,11 @@ public:
   virtual int comprimento() const            = 0;
 
   // Posição do elemento atribuido como otual
-  virtual int PosicaoAtual() const           = 0;
+  virtual int posicaoAtual() const           = 0;
 
   // Define uma dada posição como atual
   virtual void moverParaPosicao(int posicao) = 0;
 
   // Retorna: O elemento atual
   virtual const Tipo& buscaValor() const     = 0;
-}
+};
