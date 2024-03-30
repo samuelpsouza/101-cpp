@@ -4,9 +4,12 @@ In this repo, all the code that I have written when I was studying and perfectin
 
 - [Introdução a Estruturas de Dados com técnicas de programação em C](https://www.amazon.com.br/Introdu%C3%A7%C3%A3o-Estrutura-Dados-Waldemar-Celes/dp/8535212280)
 - [Data Structures And Algorithm Analysis](https://people.cs.vt.edu/shaffer/Book/JAVA3elatest.pdf)
+- Based on https://github.com/jwasham/coding-interview-university.
+
 
 - [ ] Implement a vector (mutable array with automatic resizing):
-        - [ ] Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.
+
+    - [ ] Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.
         - [ ] New raw data array with allocated memory
             - can allocate int array under the hood, just not use its features
             - start with 16, or if the starting number is greater, use power of 2 - 16, 32, 64, 128
