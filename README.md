@@ -10,7 +10,7 @@ In this repo, all the code that I have written when I was studying and perfectin
 - [ ] Implement a vector (mutable array with automatic resizing):
 
     - [x] Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.
-    - [ ] New raw data array with allocated memory
+    - [x] New raw data array with allocated memory
          - can allocate int array under the hood, just not use its features
          - start with 16, or if the starting number is greater, use power of 2 - 16, 32, 64, 128
     - [x] size() - number of items
