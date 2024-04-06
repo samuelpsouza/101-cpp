@@ -26,6 +26,16 @@ static int get_proper_capacity(int capacity)
 
 static void resize(int new_capacity, IntVector *vector)
 {
+  int *increased_data = (int*) malloc(sizeof(int) * new_capacity);
+
+  for (int i = 0; i < vector->size; i++)
+  {
+    *(increased_data + i) = *(vector->data + i);
+    free(vector->data + i);
+  }
+  
+  vector->data = increased_data;
+  vector->capacity = new_capacity;
 }
 
 static void increase_size(IntVector *vector)
@@ -40,6 +50,11 @@ static void increase_size(IntVector *vector)
 
 static void decrease_size(IntVector *vector)
 {
+  float tf = vector->size / (float)vector->capacity;
+  if (tf <= 0.25)
+  {
+    resize(vector->capacity / 2, vector);
+  }
 }
 
 IntVector *new(int capacity)
