@@ -50,7 +50,7 @@ void insert(int index, int item, IntVector *vector);
 /*
  * Can use insert above at index 0
  */
-void prepend(int item, IntVector vector);
+void prepend(int item, IntVector *vector);
 
 /*
  * Remove from end, return value

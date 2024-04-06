@@ -26,14 +26,14 @@ static int get_proper_capacity(int capacity)
 
 static void resize(int new_capacity, IntVector *vector)
 {
-  int *increased_data = (int*) malloc(sizeof(int) * new_capacity);
+  int *increased_data = (int *)malloc(sizeof(int) * new_capacity);
 
   for (int i = 0; i < vector->size; i++)
   {
     *(increased_data + i) = *(vector->data + i);
     free(vector->data + i);
   }
-  
+
   vector->data = increased_data;
   vector->capacity = new_capacity;
 }
@@ -99,10 +99,20 @@ void push(int item, IntVector *vector)
 
 void insert(int index, int item, IntVector *vector)
 {
+  increase_size(vector);
+
+  for (int i = index; i < vector->size; i++)
+  {
+    *(vector->data + (i+1)) = *(vector->data + i);
+  }
+
+  *(vector->data + index) = item;
+  
 }
 
 void prepend(int item, IntVector *vector)
 {
+  insert(0, item, vector);
 }
 
 int pop(IntVector *vector)
@@ -116,11 +126,11 @@ int pop(IntVector *vector)
 
 void delete(int index, IntVector *vector)
 {
-  decrease_size(vector);
-}
+  for (int i = index; i < vector->size; i++)
+  {
+    *(vector->data + i) = *(vector->data + (i + 1));
+  }
 
-void remove(int item, IntVector *vector)
-{
   decrease_size(vector);
 }
 
@@ -142,4 +152,14 @@ int find(int item, IntVector *vector)
   }
 
   return index;
+}
+
+void remove(int item, IntVector *vector)
+{
+  int found_item = find(item, vector);
+  if (found_item != -1)
+  {
+    *(vector->data + found_item) = NULL;
+    decrease_size(vector);
+  }
 }
