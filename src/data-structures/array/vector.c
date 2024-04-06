@@ -1,16 +1,20 @@
-#include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "vector.h"
 
-int get_proper_capacity(int capacity)
+const int INITIAL_CAPACITY = 16;
+
+static int get_proper_capacity(int capacity)
 {
-  if (capacity <= 16)
+  assert(capacity > 0);
+
+  if (capacity <= INITIAL_CAPACITY)
   {
-    return 16;
+    return capacity;
   }
-  else if (capacity > 16)
+  else if (capacity > INITIAL_CAPACITY)
   {
-    int max = 2 * 16;
+    int max = 2 * INITIAL_CAPACITY;
     while (capacity > max)
     {
       max *= 2;
@@ -20,7 +24,25 @@ int get_proper_capacity(int capacity)
   return capacity;
 }
 
-IntVector *new_int_vector(int capacity)
+static void resize(int new_capacity, IntVector *vector)
+{
+}
+
+static void increase_size(IntVector *vector)
+{
+  if (vector->size == vector->capacity)
+  {
+    resize(vector->capacity * 2, vector);
+  }
+
+  vector->size++;
+}
+
+static void decrease_size(IntVector *vector)
+{
+}
+
+IntVector *new(int capacity)
 {
   IntVector *vector = (IntVector *)malloc(sizeof(IntVector));
 
@@ -31,4 +53,78 @@ IntVector *new_int_vector(int capacity)
   vector->data = (int *)malloc(found_capacity * sizeof(int));
 
   return vector;
+}
+
+int size(IntVector *vector)
+{
+  return vector->size;
+}
+
+int capacity(IntVector *vector)
+{
+  return vector->capacity;
+}
+
+bool is_empty(IntVector *vector)
+{
+  return vector > 0;
+}
+
+int at(int index, IntVector *vector)
+{
+  return *(vector->data + index);
+}
+
+void push(int item, IntVector *vector)
+{
+  increase_size(vector);
+  int *index = vector->data + size(vector);
+  index = item;
+}
+
+void insert(int index, int item, IntVector *vector)
+{
+}
+
+void prepend(int item, IntVector *vector)
+{
+}
+
+int pop(IntVector *vector)
+{
+  int *index = vector->data + size(vector);
+  int item = *(index);
+  delete (index, vector);
+  decrease_size(vector);
+  return item;
+}
+
+void delete(int index, IntVector *vector)
+{
+  decrease_size(vector);
+}
+
+void remove(int item, IntVector *vector)
+{
+  decrease_size(vector);
+}
+
+int find(int item, IntVector *vector)
+{
+  int index = -1;
+  int counter = 0;
+
+  while (counter <= vector->size)
+  {
+    int possible_item = *(vector->data + counter);
+
+    if (possible_item == item)
+    {
+      index = counter;
+      break;
+    }
+    counter++;
+  }
+
+  return index;
 }
