@@ -4,6 +4,13 @@
 
 const int INITIAL_CAPACITY = 16;
 
+typedef struct intVector
+{
+  int size;     // Number of items it is holding
+  int capacity; // How many items it can hold
+  int *arr;
+} IntVector;
+
 static int get_proper_capacity(int capacity)
 {
   assert(capacity > 0);
@@ -56,7 +63,7 @@ static void decrease_size(IntVector *vector)
   }
 }
 
-IntVector *new(int capacity)
+IntVector *new_vector(int capacity)
 {
   IntVector *vector = (IntVector *)malloc(sizeof(IntVector));
 
