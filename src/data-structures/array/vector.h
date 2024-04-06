@@ -1,17 +1,12 @@
 #include <stdbool.h>
 
-typedef struct IntVector
-{
-  int size;     // Number of items it is holding
-  int capacity; // How many items it can hold
-  int *arr;
-} IntVector;
+typedef struct intVector IntVector;
 
 /*
  * Constructor
  */
 
-IntVector *new(int capacity);
+IntVector *new_vector(int capacity);
 
 /*
  * Desctructor
