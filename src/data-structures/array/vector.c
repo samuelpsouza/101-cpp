@@ -154,6 +154,7 @@ int find(int item, IntVector *vector)
   return index;
 }
 
+// TODO: fix to remove all duplicates
 void remove(int item, IntVector *vector)
 {
   int found_item = find(item, vector);
