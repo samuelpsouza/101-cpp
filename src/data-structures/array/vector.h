@@ -4,7 +4,7 @@ typedef struct IntVector
 {
   int size;     // Number of items it is holding
   int capacity; // How many items it can hold
-  int *data;
+  int *arr;
 } IntVector;
 
 /*

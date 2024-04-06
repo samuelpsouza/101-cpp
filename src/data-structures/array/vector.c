@@ -26,15 +26,14 @@ static int get_proper_capacity(int capacity)
 
 static void resize(int new_capacity, IntVector *vector)
 {
-  int *increased_data = (int *)malloc(sizeof(int) * new_capacity);
+  int *increased_arr = (int *)malloc(sizeof(int) * new_capacity);
 
   for (int i = 0; i < vector->size; i++)
   {
-    *(increased_data + i) = *(vector->data + i);
-    free(vector->data + i);
+    *(increased_arr + i) = *(vector->arr + i);
   }
-
-  vector->data = increased_data;
+  free(vector->arr);
+  vector->arr = increased_arr;
   vector->capacity = new_capacity;
 }
 
@@ -65,7 +64,7 @@ IntVector *new(int capacity)
 
   vector->size = 0;
   vector->capacity = found_capacity;
-  vector->data = (int *)malloc(found_capacity * sizeof(int));
+  vector->arr = (int *)malloc(found_capacity * sizeof(int));
 
   return vector;
 }
@@ -87,13 +86,13 @@ bool is_empty(IntVector *vector)
 
 int at(int index, IntVector *vector)
 {
-  return *(vector->data + index);
+  return *(vector->arr + index);
 }
 
 void push(int item, IntVector *vector)
 {
   increase_size(vector);
-  int *index = vector->data + size(vector);
+  int *index = vector->arr + size(vector);
   index = item;
 }
 
@@ -103,11 +102,10 @@ void insert(int index, int item, IntVector *vector)
 
   for (int i = index; i < vector->size; i++)
   {
-    *(vector->data + (i+1)) = *(vector->data + i);
+    *(vector->arr + (i + 1)) = *(vector->arr + i);
   }
 
-  *(vector->data + index) = item;
-  
+  *(vector->arr + index) = item;
 }
 
 void prepend(int item, IntVector *vector)
@@ -117,7 +115,7 @@ void prepend(int item, IntVector *vector)
 
 int pop(IntVector *vector)
 {
-  int *index = vector->data + size(vector);
+  int *index = vector->arr + size(vector);
   int item = *(index);
   delete (index, vector);
   decrease_size(vector);
@@ -128,7 +126,7 @@ void delete(int index, IntVector *vector)
 {
   for (int i = index; i < vector->size; i++)
   {
-    *(vector->data + i) = *(vector->data + (i + 1));
+    *(vector->arr + i) = *(vector->arr + (i + 1));
   }
 
   decrease_size(vector);
@@ -141,7 +139,7 @@ int find(int item, IntVector *vector)
 
   while (counter <= vector->size)
   {
-    int possible_item = *(vector->data + counter);
+    int possible_item = *(vector->arr + counter);
 
     if (possible_item == item)
     {
@@ -160,7 +158,7 @@ void remove(int item, IntVector *vector)
   int found_item = find(item, vector);
   if (found_item != -1)
   {
-    *(vector->data + found_item) = NULL;
+    *(vector->arr + found_item) = NULL;
     decrease_size(vector);
   }
 }
