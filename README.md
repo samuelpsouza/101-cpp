@@ -39,8 +39,8 @@ In this repo, all the code that I have written when I was studying and perfectin
 - ### Linked Lists
 
     - [ ] Implement (I did with tail pointer & without):
-        - [ ] size() - returns the number of data elements in the list
-        - [ ] empty() - bool returns true if empty
+        - [x] size() - returns the number of data elements in the list
+        - [x] empty() - bool returns true if empty
         - [ ] value_at(index) - returns the value of the nth item (starting at 0 for first)
         - [ ] push_front(value) - adds an item to the front of the list
         - [ ] pop_front() - remove the front item and return its value
