@@ -70,9 +70,9 @@ void erase(int index);
 int value_n_from_end(int position);
 
 /*
-  Reverses the list
+  Returns the head reversed
 */
-void reverse();
+List* reverse();
 
 /*
   Removes the first item in the list with this value
