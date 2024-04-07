@@ -1,6 +1,7 @@
 CFLAGS = -Wno-implicit-function-declaration
 
 final: src/basic-c/main.o
+	mkdir -p build
 	gcc $(CFLAGS) src/basic-c/main.o -o build/final.exe
 
 main.o: src/basic-c/main.c
