@@ -30,3 +30,8 @@ int size(List *list)
 
     return count;
 }
+
+bool empty(List *list)
+{
+    return (list != NULL);
+}
