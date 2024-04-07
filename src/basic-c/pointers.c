@@ -20,7 +20,7 @@ int operator(int a, int b, int (*f)(int, int))
     return (*f)(a, b);
 }
 
-int main(int argc, char const *argv[])
+void run_pointers()
 {
     printf("################# Double Pointers #################\n\n\n");
 
@@ -44,5 +44,4 @@ int main(int argc, char const *argv[])
     ptr_level_three = &ptr_level_two;
 
     printf("The value is %d", ***ptr_level_three);
-    return 0;
 }
