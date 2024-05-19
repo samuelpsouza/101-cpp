@@ -135,6 +135,8 @@ List* reverse()
     return prev_node;
 }
 
-void remove_value(int info);
+void remove_value(int info)
+{}
 
-void add_before(List *list, List *node, int info);
+void add_before(List *list, List *node, int info)
+{}
