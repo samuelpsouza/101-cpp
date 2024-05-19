@@ -53,3 +53,5 @@ In this repo, all the code that I have written when I was studying and perfectin
         - [ ] value_n_from_end(n) - returns the value of the node at the nth position from the end of the list
         - [ ] reverse() - reverses the list
         - [ ] remove_value(value) - removes the first item in the list with this value
+
+- ### Stacks

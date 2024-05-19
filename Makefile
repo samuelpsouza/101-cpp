@@ -1,4 +1,7 @@
-CFLAGS = -Wno-implicit-function-declaration
+CC=clang
+CFLAGS=-Wno-implicit-function-declaration
+SRC=src
+
 
 final: src/basic-c/main.o
 	mkdir -p build
