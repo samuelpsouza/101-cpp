@@ -16,7 +16,7 @@ void buble(int size, int *a)
         int swap = 0;
         for (int j = 0; j < size - 1; j++)
         {
-            if (compare(a[j] > a[j + 1]))
+            if (compare(a[j], a[j + 1]))
             {
                 int temp = a[j];
                 a[j] = a[j + 1];
