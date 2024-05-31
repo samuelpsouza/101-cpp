@@ -55,3 +55,5 @@ In this repo, all the code that I have written when I was studying and perfectin
         - [ ] remove_value(value) - removes the first item in the list with this value
 
 - ### Stacks
+
+- ### Trees
