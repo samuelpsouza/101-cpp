@@ -107,7 +107,7 @@ public:
 
   const Tipo& buscaValor() const
   {
-    Assert((atual>=) && (atual <= tamanhoDoArranjo), "Lista não contém itens");
+    Assert((atual>=0) && (atual <= tamanhoDoArranjo), "Lista não contém itens");
     return arranjo[atual];
   }
 

@@ -9,7 +9,7 @@ typedef struct intVector IntVector;
 IntVector *new_vector(int capacity);
 
 /*
- * Desctructor
+ * Destructor
  */
 
 /*
