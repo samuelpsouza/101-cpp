@@ -25,7 +25,6 @@ public:
     string str() const;
     string raw_str() const;
     Rational &operator = (const Rational &);
-    Rational operator + (const Rational &) const;
     Rational operator - (const Rational &) const;
     Rational operator * (const Rational &) const;
     Rational operator / (const Rational &) const;
@@ -87,11 +86,6 @@ Rational& Rational::operator = (const Rational& rhs)
     return *this;
 }
 
-Rational Rational::operator + (const Rational& rhs) const
-{
-    return Rational((n * rhs.d) + (rhs.n * d), d * rhs.d);
-}
-
 Rational Rational::operator - (const Rational& rhs) const
 {
     return Rational((n * rhs.d) - (rhs.n * d), d * rhs.d);
@@ -113,6 +107,12 @@ Rational::~Rational()
     d = 1;
 }
 
+
+Rational operator + (const Rational lhs, const Rational& rhs)
+{
+    return Rational((lhs.numerator() * rhs.denominator()) + (rhs.numerator() * lhs.denominator()), lhs.denominator() * rhs.denominator());
+}
+
 int main()
 {
     Rational a {7};
@@ -120,4 +120,8 @@ int main()
 
     Rational b {25, 15};
     cout << format("b is: {} = {}", b.raw_str(), b.str()) << endl;
+
+    cout << format("a + b = {}", (a + b).str()) << endl;
+    cout << format("a + 14 = {}", (a + 14).str()) << endl;
+    cout << format("14 + b = {}", (14 + b).str()) << endl;
 }
