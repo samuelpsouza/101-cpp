@@ -25,9 +25,6 @@ public:
     string str() const;
     string raw_str() const;
     Rational &operator = (const Rational &);
-    Rational operator - (const Rational &) const;
-    Rational operator * (const Rational &) const;
-    Rational operator / (const Rational &) const;
 };
 
 Rational Rational::reduce() const
@@ -86,21 +83,6 @@ Rational& Rational::operator = (const Rational& rhs)
     return *this;
 }
 
-Rational Rational::operator - (const Rational& rhs) const
-{
-    return Rational((n * rhs.d) - (rhs.n * d), d * rhs.d);
-}
-
-Rational Rational::operator * (const Rational& rhs) const
-{
-    return Rational(n * rhs.n, d * rhs.d);
-}
-
-Rational Rational::operator / (const Rational& rhs) const
-{
-    return Rational(n * rhs.d, d * rhs.n);
-}
-
 Rational::~Rational()
 {
     n = 0;
@@ -111,6 +93,21 @@ Rational::~Rational()
 Rational operator + (const Rational lhs, const Rational& rhs)
 {
     return Rational((lhs.numerator() * rhs.denominator()) + (rhs.numerator() * lhs.denominator()), lhs.denominator() * rhs.denominator());
+}
+
+Rational operator - (const Rational lhs, const Rational& rhs)
+{
+    return Rational((lhs.numerator() * rhs.denominator()) - (rhs.numerator() * lhs.denominator()), lhs.denominator() * rhs.denominator());
+}
+
+Rational operator * (const Rational lhs, const Rational& rhs)
+{
+    return Rational(lhs.numerator() * rhs.numerator(), lhs.denominator() * rhs.denominator());
+}
+
+Rational operator / (const Rational lhs, const Rational& rhs)
+{
+    return Rational(lhs.numerator() * rhs.denominator(), lhs.denominator() * rhs.numerator());
 }
 
 int main()
